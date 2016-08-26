@@ -1,4 +1,3 @@
-require 'bcrypt'
 require 'uri'
 
 class User < ActiveRecord::Base

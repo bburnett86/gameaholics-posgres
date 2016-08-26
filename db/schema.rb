@@ -11,9 +11,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160419172519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",      null: false
+    t.integer  "game_id",      null: false
+    t.integer  "commenter_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description", null: false
+    t.string   "rules_url",   null: false
+    t.string   "image_url",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "ownerships", force: :cascade do |t|
+    t.integer  "owner_id",   null: false
+    t.integer  "game_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "value",      null: false
+    t.integer  "rater_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",     null: false
+    t.integer  "game_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "comment_id", null: false
+    t.integer  "value",      null: false
+    t.integer  "voter_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
