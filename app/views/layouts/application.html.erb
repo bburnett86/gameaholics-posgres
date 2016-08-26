@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Gameaholics</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <header>
+    <nav class = "navBar">
+      <h4 class ='navLeft'><%= link_to 'Gameaholics', root_path %>
+      <% if !logged_in? %></h4><h4 class='navRight'>
+        <%= link_to 'Register', '/register'%> | <%= link_to 'Login', '/login'%></h4>
+      <% else %>
+        <h4 class='navRight'><%= link_to "#{current_user.username}", "/users/#{current_user.username}"%> | <%= link_to "Logout", "/logout"%></h4>
+      <% end %>
+    </nav>
+  </header>
 <%= yield %>
-
 </body>
 </html>

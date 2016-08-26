@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class="jumbotron">
+    <h1>Games</h1>
+    <% if logged_in? %>
+      <div class="center-text background-grey">
+        <%= link_to "+Add a New Game!", "/games/new", class: "game-add-link" %>
+      </div>
+    <% end %>
+    <% Game.all_rated_high_to_low.each_slice(3).to_a.each do |row| %>
+      <div class="row">
+        <% row.each do |game| %>
+          <div class="col-sm-4">
+
+            <p>Overall Rating: <%= game.average_rating %></p>
+
+            <h2><%= link_to game.name, "/games/#{game.url}" %></h2>
+              <img class="img" src="<%= game.image_url %>">
+            <% if logged_in? && !current_user.owned_games.include?(game) %>
+              <%= link_to "Add To My Games", "/users/#{current_user.url}/games/#{game.url}/add", class: "game-add-link" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

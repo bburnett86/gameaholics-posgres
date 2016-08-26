@@ -1,0 +1,8 @@
+<div class="comment-form">
+  <%= form_for(@comment, url: url_for(action: 'create', controller: 'comments')) do |f| %>
+      <%= f.text_field :content, placeholder: "Your Comment" %>
+      <%= f.hidden_field :game_id, :value => @game.id %>
+      <%= f.hidden_field :commenter_id, :value => current_user.id %>
+      <%= f.submit "Post Comment" %>
+  <% end %>
+</div>

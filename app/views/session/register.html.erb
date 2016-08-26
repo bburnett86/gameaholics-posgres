@@ -1,0 +1,17 @@
+<div class = 'container'>
+    <div class="jumbotron">
+    <h1 class="">Registration</h1>
+    <% if !@user.errors.empty? %>
+      <%= render partial: 'partials/errors' %>
+    <% end %>
+    <%= form_for(@user, url: url_for(action: 'register', controller: 'session')) do |f| %>
+      <%= f.text_field :username, placeholder: "Userame", value: @user.try(:username) %>
+      <%= f.text_field :city, placeholder: "City", value: @user.try(:city) %>
+      <%= f.text_field :state, placeholder: "State", value: @user.try(:state) %>
+      <%= f.email_field :email, placeholder: "Email", value: @user.try(:email) %>
+      <%= f.password_field :password, placeholder: "Password" %>
+      <%= f.password_field :password_confirmation, placeholder: "Re-Enter Password" %>
+      <%= f.submit "Register" %>
+    <% end %>
+  </div>
+</div>

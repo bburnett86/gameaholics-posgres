@@ -1,0 +1,42 @@
+<div class = 'container'>
+  <div class = 'jumbotron'>
+    <% if logged_in? %>
+        <h2><%= @user.username %>'s games</h2>
+        <p><%= @user.city %>, <%= @user.state %></p>
+    <% end %>
+
+    <p>This page is under construction</p>
+
+    <div class="users-games" style="width:70%; margin: 20px; border: 1px dotted grey; padding: 5px">
+      <% @user.top_rated_games.each do |game| %>
+        <div class="users-games-each">
+          <p><%= game.name %></p>
+          <img src="<%= game.image_url %>"><br>
+          <% if @user == current_user %>
+              <% if @user.rating_for_game(game) != nil %>
+                <span><%= "I Rated This Game At " + @user.rating_for_game(game).to_s + " Stars" %></span>
+              <% else %>
+                <div class="rating">
+                  <p>Rate This Game: </p>
+                  <%= link_to "☆", "/games/#{game.url}/rate/1" %>
+                  <%= link_to "☆", "/games/#{game.url}/rate/2" %>
+                  <%= link_to "☆", "/games/#{game.url}/rate/3" %>
+                  <%= link_to "☆", "/games/#{game.url}/rate/4" %>
+                  <%= link_to "☆", "/games/#{game.url}/rate/5" %>
+                </div>
+              <% end %>
+          <% else %>
+            <% if @user.rating_for_game(game) != nil %>
+              <span><%= "#{@user.username.capitalize} Rated This Game At " %></span>
+            <% else %>
+              <span><%= "#{@user.username.capitalize} Has Not Yet Rated This Game" %></span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+

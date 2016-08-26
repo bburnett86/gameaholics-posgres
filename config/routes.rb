@@ -1,56 +1,42 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'welcome#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get '/login' => 'session#new'
+  post '/login' => 'session#login'
+  get '/logout' => 'session#logout'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get '/register' => 'session#register'
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  post '/register' => 'users#create'
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  get '/comments/:id/upvote' => 'comments#upvote'
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  get '/comments/:id/downvote' => 'comments#downvote'
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  get '/users/:username/games/:game_name/add' => 'games#owned'
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  get '/games/:game_name/rate/:rate_value' => 'games#rate_game'
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :users, only: [:new, :create]
+
+  resources :games, only: [:new, :create]
+
+  # resources :games, only: [:show, :edit, :update, :destroy], param: :game_name
+
+  resources :games, only: [:show, :edit, :update, :destroy], param: :game_name do
+    resources :ratings, only: [:new, :create]
+  end
+
+  resources :users, only: [:show, :edit, :update, :destroy], param: :username
+
+  resources :tags, only: [:new, :create,]
+
+  resources :tags, only: [:new, :create, :index]
+
+  resources :tags, only: [:show], param: :tag_name
+
+  resources :comments, only: [:new, :create, :destroy]
+
 end
+

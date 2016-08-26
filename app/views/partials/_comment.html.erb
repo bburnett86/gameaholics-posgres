@@ -1,0 +1,22 @@
+<div style="width:40%; margin: auto; border: 1px dashed grey; padding: 5px">
+  <div class="vote-arrows">
+
+    <a class="vote" href="/comments/<%= comment.id %>/upvote">
+      <i class="fa fa-caret-up"></i>
+    </a>
+
+    <p class="vote-count">
+      <%= comment.vote_count %>
+    </p>
+
+    <a class="vote" href="/comments/<%= comment.id %>/downvote">
+      <i class="fa fa-caret-down"></i>
+    </a>
+
+  </div>
+  <p><%= comment.content %></p>
+  <%= link_to "#{comment.commenter.username}", "/users/#{comment.commenter.url}" %>
+  <% if current_user == comment.commenter %>
+    <%= link_to "Delete", comment, method: :delete %>
+  <% end %>
+</div>
