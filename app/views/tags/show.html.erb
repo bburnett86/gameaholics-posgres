@@ -1,0 +1,18 @@
+<div class="container">
+  <div class='jumbotron'>
+  <h2><%= @tag.name %></h2>
+  <% if @games.length > 0 %>
+    <% @games.each do |game| %>
+        <div class="game-container">
+          <img class="img" src="<%= game.image_url %>">
+          <%= link_to "#{game.name}", "/games/#{game.url}" %>
+          <span><%= game.average_rating %> stars</span>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>There are no games associated with this tag.</p>
+  <% end %>
+
+  </div>
+</div>

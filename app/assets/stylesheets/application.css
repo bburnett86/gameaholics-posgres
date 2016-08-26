@@ -13,3 +13,112 @@
  *= require_tree .
  *= require_self
  */
+.navLeft{
+  position: absolute;
+  left: 15px;
+}
+
+.navRight{
+  position: absolute;
+  right: 15px;
+}
+
+.row{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+background: url('chessboard.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+display: compact;
+}
+
+.jumbotron{
+  opacity: .7;
+  margin-top: 50px;
+}
+
+.jumbotron:hover{
+  opacity: .9;
+}
+
+.center-text {
+  text-align: center;
+  width: 20%;
+  margin: 5px auto;
+}
+
+.background-white {
+  background: white;
+  border: 1px solid black;
+
+}
+
+.game-container {
+  display: inline-block;
+  padding: 8px 0px;
+  opacity: 1.25;
+  width: 30%;
+  text-align: center;
+  margin: 5px 5px;
+  border: 2px solid grey;
+
+}
+
+.gameShow{
+  margin-left: 200px;
+}
+
+.img {
+  width: 250px;
+  height: 250px;
+}
+
+.gameBox {
+  width:70%;
+  margin: 20px;
+  border: 1px dotted grey;
+  padding: 5px
+}
+
+.errors-container {
+  width: 30%;
+  margin: 10px auto;
+  background: pink;
+  border: 2px solid red;
+}
+
+.errors-container > h1 {
+  text-align: center;
+  font-size: .8em;
+  color: crimson;
+}
+
+.errors-container > .errors-list > li {
+  color: red;
+}
+
+div.vote-arrows {
+  position: absolute;
+  float: left;
+  margin: -8px 0 100px -15px;
+}
+
+div.vote-arrows > * {
+  margin: 7px 0;
+}
+
+div.vote-arrows > p.vote-count {
+  font-size: .85em;
+}
+
+div.vote-arrows > a.vote > i.fa {
+  font-size: .95em;
+}
+
+.col-sm-4 {
+  text-align: center;
+}

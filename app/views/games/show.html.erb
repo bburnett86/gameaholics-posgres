@@ -1,0 +1,59 @@
+<div class = 'container'>
+  <div class ='jumbotron'>
+    <div class = "gameShow">
+      <h2><%= @game.name %></h2>
+      <span>Overall Rating: <%= @game.average_rating %></span>
+
+      <div class= "gameBox">
+        <img class="img" src="<%= @game.image_url %>">
+        <p>Description: <%= @game.description %></p>
+        <p><a href="<%= @game.rules_url %>">Rules</a></p>
+      </div>
+
+
+  <% if logged_in? && owner?(@game) %>
+    <%= form_tag(tags_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search tags" %>
+      <%= submit_tag "Search Tags", :name => nil %>
+    <% end %>
+  <% end %>
+
+</div>
+
+<div class="gameBox">
+  <h5>Tags: </h5>
+  <% @game.tags.each do |tag| %>
+    <ul>
+      <li><%= link_to "#{tag.name}", tag_path(tag.name) %></li>
+    </ul>
+  <% end %>
+</div>
+
+<% if logged_in? %>
+  <div style="width:70%; margin: 20px; border: 1px dotted grey; padding: 5px">
+    <h3>Owners: </h3>
+      <ul>
+        <% @game.owners.each do |owner| %>
+          <li><%= owner.username %></li>
+        <% end %>
+      </ul>
+      <%if !current_user.owned_games.include?(@game) %>
+        <%= link_to "I Own This Game", "/users/#{current_user.url}/games/#{@game.url}/add", class: "game-add-link" %>
+      <% end %>
+  </div>
+<% end %>
+
+<% if logged_in? %>
+  <div class="comment-container">
+    <% @game.comments.each do |comment| %>
+      <%= render partial: 'partials/comment', locals: {comment: comment} %>
+    <% end %>
+  </div>
+
+  <div class="comment-form-container">
+    <% if !@comment.errors.empty? %>
+      <%= render partial: 'partials/errors' %>
+    <% end %>
+    <%= render partial: 'partials/comment_form' %>
+  </div>
+<% end %>

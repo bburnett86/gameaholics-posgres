@@ -1,0 +1,49 @@
+Board Game Freak
+- site that will help me and friends keep track of games
+- we all have different games --
+  - should be able to say the game i have and load a pic of it
+  - name
+  - rules
+  - basic description - be nice to have everyone be able to update it
+  - be able to rate, "stars", be able to sort them by my stars - can only rate IF I own the game
+  - be able to sort by characteristics
+  - when sorting, can see other users that have that game
+- we want to know who has what games
+- games are diff and we care about differences, characteristics: strategy, cards, luck, etc.
+- dbc overflow site is cool - like to be able to vote on each others' games
+  - whether you like the game or not
+  - people can comment on games, only if part of site Gameaholics, but anyone can read
+- only gameacholics can manipulate
+- i like to know who else has my games, so i can play with them
+- want to knwo where their address is; potential to meet up
+- stretch.... to sign up, they have to put in the user id of someone who referred you
+- stretch... profile page stats
+
+
+not logged in, see games sorted by highest rated
+game view
+  - rules: link to rules (optional)
+  - if not logged in, see comments, but not see username; can see votes but cannot vote
+
+Look like
+- easy to use
+- general page where anyone can look and explore what games are there
+  - not see what users exists
+  - everyone in the club should be able to know about every body else
+
+Stretch
+- want to be able to track game of
+
+
+Voting
+
+I have games and I want other gameaholics to be able to like and comment on the games
+
+My page, I have games and I rate them
+  - ie. Monopoly - I give it one star
+  - votes on comments
+
+Ratings are averaged like a book on Amazon
+
+*** Speak in lingo of client ***
+- on wireframe, say "Home Page", rather than "Home View"

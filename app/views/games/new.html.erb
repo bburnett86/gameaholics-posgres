@@ -1,0 +1,22 @@
+<div class = "container">
+  <% if @game ||= nil %>
+    <% @game ||= game %>
+  <% end %>
+  <% if flash[:errors] %>
+    <%= render partial: 'partials/errors' %>
+  <% end %>
+  <div class="jumbotron">
+    <%= form_for @game do |f| %>
+      <%= f.text_field :name, placeholder: "Name" %>       <br>
+      <%= f.text_field :description, placeholder: "Description" %>
+      <br>
+      <%= f.text_field :rules_url, placeholder: "Link To Rules" %>      <br>
+      <%= f.text_field :image_url, placeholder: "Link To Image Of Game" %>      <br>
+      <%= f.fields_for :tags do |tag_form| %>
+        <%= tag_form.text_field :names_list, placeholder: "Tags, separated by commas" %>      <br>
+        <% end %>
+      <%= f.submit "Add Game!" %>
+    <% end %>
+  </div>
+</div>
+
